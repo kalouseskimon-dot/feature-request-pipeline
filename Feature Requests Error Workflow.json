@@ -1,0 +1,74 @@
+{
+  "name": "Feature Requests Error Workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "d3bf09bb-023b-4bf5-b279-21aa1a32a75c",
+      "name": "Error Trigger"
+    },
+    {
+      "parameters": {
+        "sendTo": "your_email",
+        "subject": "Error in Feature Requests Workflows",
+        "message": "={{ $json.execution.error.message }}{{ $json.execution.lastNodeExecuted }}{{ $json.workflow.name }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "aa4b36db-c06f-4800-8b33-1bc794fe262c",
+      "name": "Send a message",
+      "webhookId": "b810e80b-31f3-42ff-a386-7fb36d7c3a42",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "K9UXy9HHQqJiX3ff",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "bab24e8a-2dee-4452-a984-0a7d18916bba",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "ad02b850b72b806c34d3f1401b6f233a142112a47a1a3338f6ba3a1a764e7713"
+  },
+  "nodeGroups": [],
+  "id": "kzeCQtiH9siUlR0J",
+  "tags": [
+    {
+      "updatedAt": "2026-06-18T16:11:06.919Z",
+      "createdAt": "2026-06-18T16:11:06.919Z",
+      "id": "eokA6O9iTwCiB75u",
+      "name": "error handling"
+    }
+  ]
+}
